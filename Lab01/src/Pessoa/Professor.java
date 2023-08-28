@@ -1,11 +1,11 @@
-package Classes;
+package Pessoa;
 
-public class Funcionario {
+public class Professor {
 	private String nome;
 	private int registro;
 	
 	// Construtor
-	public Funcionario(String nome, int registro) {
+	public Professor(String nome, int registro) {
 		this.nome = nome;
 		this.registro = registro;
 	}
@@ -26,9 +26,7 @@ public class Funcionario {
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", registro=" + registro + "]";
+		return "Professor [nome=" + nome + ", registro=" + registro + "]";
 	}
-	
-	
-	
+		
 }

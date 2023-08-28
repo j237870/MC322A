@@ -1,6 +1,9 @@
-package Classes;
+package Biblioteca;
 
 import java.util.Date;
+
+import Item_Multimidia.*;
+import Pessoa.*;
 
 public class Emprestimo {
 	private Livro livro;

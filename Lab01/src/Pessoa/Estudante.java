@@ -1,14 +1,11 @@
-package Classes;
+package Pessoa;
 
-//import java.util.List;
-//import java.util.ArrayList;
-
-public class Membro {
+public class Estudante {
 	private String nome;
 	private int registro;
 	
 	// Construtor
-	public Membro(String nome, int registro) {
+	public Estudante(String nome, int registro) {
 		this.nome = nome;
 		this.registro = registro;
 	}
@@ -29,7 +26,7 @@ public class Membro {
 
 	@Override
 	public String toString() {
-		return "Membro [nome=" + nome + ", registro=" + registro + "]";
+		return "Estudante [nome=" + nome + ", registro=" + registro + "]";
 	}
 		
 }
