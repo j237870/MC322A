@@ -1,10 +1,10 @@
 package Pessoa;
 
-public class Funcionario extends Membro{
+public class EstudantePosGraduacao extends Membro{
 
 	@Override
 	public int limiteEmprestimo() {
-		return 4;
+		return 5;
 	}
 
 	@Override
@@ -14,7 +14,7 @@ public class Funcionario extends Membro{
 
 	@Override
 	public double multaAtraso() {
-		return 0.75;
+		return 1.0;
 	}
-		
+
 }

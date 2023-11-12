@@ -14,7 +14,7 @@ public class Main {
 		Emprestimo emprestimo = new Emprestimo(trigonometria, new Date(2023, 8, 7), new Date(2023, 8, 14), joao);
 		Funcionario pereira = new Funcionario("Seu Pereira", 2);
 		Biblioteca minhaBiblioteca = new Biblioteca("BAE", 1000, Arrays.asList(pereira));
-		minhaBiblioteca.adicionaLivro(trigonometria);
+		minhaBiblioteca.adicionaItemMultimidia(trigonometria);
 		minhaBiblioteca.adicionaMembro(joao);
 		minhaBiblioteca.fazEmprestimos(emprestimo);
 		

@@ -1,27 +1,27 @@
 package Item_Multimidia;
 
-public class Livro extends ItemMultimidia{
-	private String isbn;
-	private String edicao;
+public class Outro extends ItemMultimidia{
+	private String tipoRecurso;
+	private String formato;
 	private int numeroTotalCopias;
 	private int numeroDisponivelCopias;
 	private String localizacao;
 	private String estadoConservacao;
 	
-	public String getIsbn() {
-		return isbn;
+	public String getTipoRecurso() {
+		return tipoRecurso;
 	}
 	
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setTipoRecurso(String tipoRecurso) {
+		this.tipoRecurso = tipoRecurso;
 	}
 	
-	public String getEdicao() {
-		return edicao;
+	public String getFormato() {
+		return formato;
 	}
 	
-	public void setEdicao(String edicao) {
-		this.edicao = edicao;
+	public void setFormato(String formato) {
+		this.formato = formato;
 	}
 	
 	public int getNumeroTotalCopias() {

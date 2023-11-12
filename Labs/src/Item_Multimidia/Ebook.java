@@ -1,48 +1,28 @@
 package Item_Multimidia;
 
-import java.util.List;
+import java.util.Date;
 
-import Pessoa.Autor;
-
-public class Ebook {
-	private String titulo;
-	private List<Autor> listaAutores; //Composição com a classe Autor
-	private int anoPublicacao;
+public class Ebook extends ItemMultimidia{
+	private String formato;
+	private int numeroTotalLicencas;
 	private String url;
-	private String assunto;
-		
-	// Construtor
-	public Ebook(String titulo, List<Autor> listaAutores, int anoPublicacao, String url, String assunto) {
-		this.titulo = titulo;
-		this.listaAutores = listaAutores;
-		this.anoPublicacao = anoPublicacao;
-		this.url = url;
-		this.assunto = assunto;
+	private String requisitosLeitura;
+	private Date dataDisponibilidade;
+	
+	public String getFormato() {
+		return formato;
 	}
 	
-	// Getters e setters
-	public String getTitulo() {
-		return titulo;
+	public void setFormato(String formato) {
+		this.formato = formato;
 	}
 	
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public int getNumeroTotalLicencas() {
+		return numeroTotalLicencas;
 	}
 	
-	public List<Autor> getListaAutores() {
-		return listaAutores;
-	}
-	
-	public void setListaAutores(List<Autor> listaAutores) {
-		this.listaAutores = listaAutores;
-	}
-	
-	public int getAnoPublicacao() {
-		return anoPublicacao;
-	}
-
-	public void setAnoPublicacao(int anoPublicacao) {
-		this.anoPublicacao = anoPublicacao;
+	public void setNumeroTotalLicencas(int numeroTotalLicencas) {
+		this.numeroTotalLicencas = numeroTotalLicencas;
 	}
 	
 	public String getUrl() {
@@ -53,11 +33,24 @@ public class Ebook {
 		this.url = url;
 	}
 	
-	public String getAssunto() {
-		return assunto;
+	public String getRequisitosLeitura() {
+		return requisitosLeitura;
 	}
 	
-	public void setAssunto(String assunto) {
-		this.assunto = assunto;
+	public void setRequisitosLeitura(String requisitosLeitura) {
+		this.requisitosLeitura = requisitosLeitura;
+	}
+	
+	public Date getDataDisponibilidade() {
+		return dataDisponibilidade;
+	}
+	
+	public void setDataDisponibilidade(Date dataDisponibilidade) {
+		this.dataDisponibilidade = dataDisponibilidade;
+	}
+
+	@Override
+	public int getNumeroDisponivelCopias() {
+		throw new UnsupportedOperationException("Esse formato não aceita empréstimos ou reservas");
 	}
 }

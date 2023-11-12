@@ -1,27 +1,28 @@
 package Item_Multimidia;
 
-public class Livro extends ItemMultimidia{
-	private String isbn;
-	private String edicao;
+import java.util.List;
+
+public class CdAudio extends ItemMultimidia{
+	private List<String> listaFaixas;
+	private int duracaoTotal;
 	private int numeroTotalCopias;
 	private int numeroDisponivelCopias;
-	private String localizacao;
 	private String estadoConservacao;
 	
-	public String getIsbn() {
-		return isbn;
+	public List<String> getListaFaixas() {
+		return listaFaixas;
 	}
 	
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
+	public void setListaFaixas(List<String> listaFaixas) {
+		this.listaFaixas = listaFaixas;
 	}
 	
-	public String getEdicao() {
-		return edicao;
+	public int getDuracaoTotal() {
+		return duracaoTotal;
 	}
 	
-	public void setEdicao(String edicao) {
-		this.edicao = edicao;
+	public void setDuracaoTotal(int duracaoTotal) {
+		this.duracaoTotal = duracaoTotal;
 	}
 	
 	public int getNumeroTotalCopias() {
@@ -38,14 +39,6 @@ public class Livro extends ItemMultimidia{
 	
 	public void setNumeroDisponivelCopias(int numeroDisponivelCopias) {
 		this.numeroDisponivelCopias = numeroDisponivelCopias;
-	}
-	
-	public String getLocalizacao() {
-		return localizacao;
-	}
-	
-	public void setLocalizacao(String localizacao) {
-		this.localizacao = localizacao;
 	}
 	
 	public String getEstadoConservacao() {

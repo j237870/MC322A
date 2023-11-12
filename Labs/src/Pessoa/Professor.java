@@ -1,32 +1,20 @@
 package Pessoa;
 
-public class Professor {
-	private String nome;
-	private int registro;
-	
-	// Construtor
-	public Professor(String nome, int registro) {
-		this.nome = nome;
-		this.registro = registro;
-	}
-	
-	// Getters e setters
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public int getRegistro() {
-		return registro;
-	}
-	public void setRegistro(int registro) {
-		this.registro = registro;
+public class Professor extends Membro{
+
+	@Override
+	public int limiteEmprestimo() {
+		return 7;
 	}
 
 	@Override
-	public String toString() {
-		return "Professor [nome=" + nome + ", registro=" + registro + "]";
+	public int prazoEmprestimo() {
+		return 30;
+	}
+
+	@Override
+	public double multaAtraso() {
+		return 0.5;
 	}
 		
 }

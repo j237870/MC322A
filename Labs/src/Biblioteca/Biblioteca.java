@@ -1,28 +1,28 @@
 package Biblioteca;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-import Item_Multimidia.Livro;
+import Item_Multimidia.ItemMultimidia;
 import Pessoa.Funcionario;
 import Pessoa.Membro;
 
-import java.util.ArrayList;
-
 public class Biblioteca {
 	private String nome;
-	private List<Livro> listaLivros; //Agregação com a classe Livro
+	private List<ItemMultimidia> listaItems; //Agregação com a classe Livro
 	private List<Funcionario> listaFuncionarios; //Composição com a classe Funcionario
 	private List<Membro> listaMembros = new ArrayList<Membro>(); //Composição com a classe Membro
 	private List<Emprestimo> listaEmprestimos; //Composição com a classe Emprestimo
-	private int maxLivros;
+	private List<Reserva> listaReservas;
 	
 	// Construtor
-	public Biblioteca(String nome, int maxLivros, List<Funcionario> listaFuncionarios) {
+	public Biblioteca(String nome, List<Funcionario> listaFuncionarios) {
 		this.nome = nome;
-		this.maxLivros = maxLivros;
 		this.listaFuncionarios = listaFuncionarios;
-		listaLivros = new ArrayList<Livro>(maxLivros);
-		listaEmprestimos = new ArrayList<Emprestimo>(maxLivros);
+		listaItems = new ArrayList<ItemMultimidia>();
+		listaEmprestimos = new ArrayList<Emprestimo>();
+		listaReservas = new ArrayList<Reserva>();
 	}
 	
 	// Getters e setters
@@ -34,8 +34,8 @@ public class Biblioteca {
 		this.nome = nome;
 	}
 	
-	public List<Livro> getListaLivros() {
-		return listaLivros;
+	public List<ItemMultimidia> getListaLivros() {
+		return listaItems;
 	}
 	
 	public List<Funcionario> getListaFuncionarios() {
@@ -49,27 +49,53 @@ public class Biblioteca {
 	public List<Membro> getListaMembros() {
 		return listaMembros;
 	}
-		
-	public void fazEmprestimos(Emprestimo emprestimo) {
-		this.listaEmprestimos.add(emprestimo);
+	
+	private long getEmprestimosDoMembro(Membro membro) {
+		return this.listaEmprestimos
+				.stream()
+				.filter(e -> e.getMembro().equals(membro))
+				.count();
 	}
 	
-	public void adicionaLivro(Livro livro) {
-		if(listaLivros.size() < maxLivros)
-			listaLivros.add(livro);
-		else
-			System.out.println("A biblioteca está cheia.");
+	private Date getDataDevolucaoMaisRecente(ItemMultimidia item) {
+		return this.listaEmprestimos
+				.stream()
+				.filter(i -> i.getItem().equals(item))
+				.map(Emprestimo::getDataPrevista)
+				.min(Date::compareTo)
+				.orElse(new Date());
+	}
+		
+	public void fazEmprestimos(Membro membro, ItemMultimidia item) {
+		if(item.getNumeroDisponivelCopias() == 0) {
+			this.fazReserva(membro, item);
+			return;
+		}
+		
+		if(getEmprestimosDoMembro(membro) >= membro.limiteEmprestimo()) {
+			System.err.println("Limite de empréstimo atingido para o membro" + membro.getNome());
+			return;
+		}
+		
+		this.listaEmprestimos.add(new Emprestimo(item, new Date(), membro));
+	}
+	
+	public void fazReserva(Membro membro, ItemMultimidia item) {
+		Date dataReserva = new Date();
+		
+		if(item.getNumeroDisponivelCopias() == 0) {
+			dataReserva = this.getDataDevolucaoMaisRecente(item);
+		}
+		
+		this.listaReservas.add(new Reserva(membro, item, dataReserva));
+	}
+	
+	public void adicionaItemMultimidia(ItemMultimidia item) {
+		listaItems.add(item);
 	}
 	
 	public void adicionaMembro(Membro membro) {
 		listaMembros.add(membro);
-	}
-
-	@Override
-	public String toString() {
-		return "Biblioteca [nome=" + nome + ", listaLivros=" + listaLivros + ", listaFuncionarios=" + listaFuncionarios
-				+ ", listaMembros=" + listaMembros + ", listaEmprestimos=" + listaEmprestimos + ", maxLivros="
-				+ maxLivros + "]";
 	}
 
 }

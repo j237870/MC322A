@@ -6,50 +6,44 @@ import Item_Multimidia.*;
 import Pessoa.*;
 
 public class Emprestimo {
-	private Livro livro;
+	private ItemMultimidia item;
 	private Date dataSaida;
 	private Date dataPrevista;
 	private Membro membro;
 	
-	// Construtor	
-	public Emprestimo(Livro livro, Date dataSaida, Date dataPrevista, Membro membro) {
-		this.livro = livro;
+	public Emprestimo(ItemMultimidia item, Date dataSaida, Membro membro) {
+		this.item = item;
 		this.dataSaida = dataSaida;
-		this.dataPrevista = dataPrevista;
 		this.membro = membro;
+		this.dataPrevista = new Date(dataSaida.getYear(), dataSaida.getMonth(), dataSaida.getDate() + membro.prazoEmprestimo());
+	}
+
+	public ItemMultimidia getItem() {
+		return item;
 	}
 	
-	// Getters e setters
-	public Livro getLivro() {
-		return livro;
+	public void setItem(ItemMultimidia item) {
+		this.item = item;
 	}
-	public void setLivro(Livro livro) {
-		this.livro = livro;
-	}
+	
 	public Date getDataSaida() {
 		return dataSaida;
 	}
+	
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
 	}
+	
 	public Date getDataPrevista() {
 		return dataPrevista;
 	}
-	public void setDataPrevista(Date dataPrevista) {
-		this.dataPrevista = dataPrevista;
-	}
+	
 	public Membro getMembro() {
 		return membro;
 	}
+	
 	public void setMembro(Membro membro) {
 		this.membro = membro;
-	}
-
-	@Override
-	public String toString() {
-		return "Emprestimo [livro=" + livro + ", dataSaida=" + dataSaida + ", dataPrevista=" + dataPrevista
-				+ ", membro=" + membro + "]";
-	}
-	
-	
+	}	
 }
+

@@ -1,32 +1,57 @@
 package Pessoa;
 
-public class Membro {
+import java.util.Date;
+
+public abstract class Membro {
 	private String nome;
-	private int registro;
+	private int numeroIdentificacao;
+	private String endereco;
+	private String contato;
+	private Date dataRegistro;
 	
-	// Construtor
-	public Membro(String nome, int registro) {
-		this.nome = nome;
-		this.registro = registro;
-	}
+	public abstract int limiteEmprestimo();
 	
-	// Getters e setters
+	public abstract int prazoEmprestimo();
+	
+	public abstract double multaAtraso();
+	
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getRegistro() {
-		return registro;
+	
+	public int getNumeroIdentificacao() {
+		return numeroIdentificacao;
 	}
-	public void setRegistro(int registro) {
-		this.registro = registro;
+	
+	public void setNumeroIdentificacao(int numeroIdentificacao) {
+		this.numeroIdentificacao = numeroIdentificacao;
 	}
-
-	@Override
-	public String toString() {
-		return "Membro [nome=" + nome + ", registro=" + registro + "]";
+	
+	public String getEndereco() {
+		return endereco;
 	}
-		
+	
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	
+	public String getContato() {
+		return contato;
+	}
+	
+	public void setContato(String contato) {
+		this.contato = contato;
+	}
+	
+	public Date getDataRegistro() {
+		return dataRegistro;
+	}
+	
+	public void setDataRegistro(Date dataRegistro) {
+		this.dataRegistro = dataRegistro;
+	}
 }
